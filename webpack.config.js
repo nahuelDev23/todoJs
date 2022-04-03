@@ -18,19 +18,31 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
-                exclude: /styles.css$/,
-                use: ['style-loader', 'css-loader'],
+                test: /\.scss$/,
+                exclude: /styles.scss$/,
+                use: ['style-loader', 'css-loader', {
+                    loader: 'sass-loader',
+                    options: {
+                        webpackImporter: false,
+                        sassOptions: {
+                            includePaths: ['node_modules'],
+                        },
+                        implementation: require('dart-sass'),
+                    }
+                }],
             },
             {
-                test: /styles.css$/,
-                use: [MiniCssExtract.loader, "css-loader"],
+                test: /styles.scss$/,
+                use: [MiniCssExtract.loader, "css-loader", "sass-loader"],
+
+
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
                 loader: 'file-loader',
 
-            }
+            },
+
         ]
     },
     plugins: [
@@ -50,7 +62,7 @@ module.exports = {
         new ProvidePlugin({
             $: 'jquery',
             // jQuery: 'jquery',
-          })
-        
+        })
+
     ]
 }

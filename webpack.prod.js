@@ -10,7 +10,7 @@ module.exports = {
     mode: 'production',
     output: {
         clean: true,
-        filename:'main.[contenthash].js'
+        filename: 'main.[contenthash].js'
     },
     module: {
         rules: [
@@ -22,13 +22,25 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
-                exclude: /styles.css$/,
-                use: ['style-loader', 'css-loader'],
+                test: /\.scss$/,
+                exclude: /styles.scss$/,
+                use: ['style-loader', 'css-loader', {
+                    loader: 'sass-loader',
+                    options: {
+                        webpackImporter: false,
+                        sassOptions: {
+                            includePaths: ['node_modules'],
+                        },
+                        implementation: require('dart-sass'),
+                    }
+                }],
+               
             },
             {
-                test: /styles.css$/,
-                use: [MiniCssExtract.loader, "css-loader"],
+                test: /styles.scss$/,
+                use: [MiniCssExtract.loader, "css-loader", "sass-loader"],
+                
+                
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
@@ -37,18 +49,19 @@ module.exports = {
             },
             {
                 test: /\.m?js$/,
-                exclude:/node_modules/,
-                use:{
-                    loader:"babel-loader",
-                    options:{
-                        presets:['@babel/preset-env']
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ['@babel/preset-env']
                     }
                 }
-            }
+            },
+            
         ]
     },
     optimization: {
-        minimize:true,
+        minimize: true,
         minimizer: [new CssMinimizer(), new Terser()]
     },
     plugins: [
@@ -67,7 +80,7 @@ module.exports = {
         }),
         new ProvidePlugin({
             $: 'jquery',
-          })
-        
+        })
+
     ]
 }
