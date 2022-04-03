@@ -3,7 +3,7 @@ $(function(){
 		infinite:true,
 		slidesToShow: 4,
     slidesToScroll: 1,
-		arrows:false,
+		arrows:true,
 		autoplay: true,
 		autoplaySpeed: 3900,
 		dots: false,
@@ -16,7 +16,8 @@ $(function(){
                 slidesToShow: 3,
                 slidesToScroll: 1,
                 infinite: true,
-                dots: true
+                dots: true,
+                arrows:'<div style="color:red"></div>'
               }
             },
             {

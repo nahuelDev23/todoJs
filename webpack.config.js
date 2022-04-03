@@ -14,7 +14,10 @@ module.exports = {
                 test: /\.html$/,
                 loader: 'html-loader',
                 options: {
-                    sources: false
+                    sources: false,
+                    minimize: true,
+                    removeComments: true,
+                    collapseWhitespace: true,
                 }
             },
             {

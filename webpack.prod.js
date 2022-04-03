@@ -18,7 +18,8 @@ module.exports = {
                 test: /\.html$/,
                 loader: 'html-loader',
                 options: {
-                    sources: false
+                    sources: true,
+                    minimize: true,
                 }
             },
             {
@@ -76,6 +77,7 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 { from: "src/assets", to: "assets/" },
+                {from:'/*.html',to:'./'},
             ],
         }),
         new ProvidePlugin({

@@ -1,4 +1,10 @@
 @import url('./scss/componentes.scss');
 @import url('./scss/todoTheme/index.scss');
-@import url('slick-carousel/slick/slick.scss');
-// @import url('slick-carousel/slick/slick-theme.scss');
+@import url('slick-carousel/slick/slick.css');
+@import url('slick-carousel/slick/slick-theme.css');
+
+
+.slick-next::before,
+.slick-prev::before {
+    color:aqua ;
+}
