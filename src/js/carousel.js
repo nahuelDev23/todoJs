@@ -1,3 +1,4 @@
+
 $(function(){
 	$('.center').slick({
 		infinite:true,

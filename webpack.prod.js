@@ -2,7 +2,8 @@ const HtmlWebpack = require("html-webpack-plugin")
 const MiniCssExtract = require("mini-css-extract-plugin")
 const CopyPlugin = require("copy-webpack-plugin");
 const CssMinimizer = require("css-minimizer-webpack-plugin")
-const Terser = require('terser-webpack-plugin')
+const Terser = require('terser-webpack-plugin');
+const { ProvidePlugin } = require("webpack");
 
 
 module.exports = {
@@ -64,6 +65,9 @@ module.exports = {
                 { from: "src/assets", to: "assets/" },
             ],
         }),
+        new ProvidePlugin({
+            $: 'jquery',
+          })
         
     ]
 }

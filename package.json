@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.js",
     "build:dev": "webpack --config webpack.config.js",
-    "start": "webpack serve --config webpack.config.js --open --port=8080"
+    "start": "webpack serve --config webpack.config.js  --port=8080"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +31,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "jquery": "^3.6.0",
     "slick-carousel": "^1.8.1"
   }
 }

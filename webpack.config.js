@@ -1,6 +1,7 @@
 const HtmlWebpack = require("html-webpack-plugin")
 const MiniCssExtract = require("mini-css-extract-plugin")
 const CopyPlugin = require("copy-webpack-plugin");
+const { ProvidePlugin } = require("webpack");
 
 module.exports = {
     mode: 'development',
@@ -46,6 +47,10 @@ module.exports = {
                 { from: "src/assets", to: "assets/" },
             ],
         }),
+        new ProvidePlugin({
+            $: 'jquery',
+            // jQuery: 'jquery',
+          })
         
     ]
 }
