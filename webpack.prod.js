@@ -67,17 +67,25 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpack({
-            // filename: 'index.html',
+            filename: 'index.html',
             template: './src/index.html',
+            chunks: ['main']
+        }),
+        new HtmlWebpack({
+            // filename: 'index.html',
+            filename: 'contacto.html',
+            template: './src/contacto.html',
+            chunks: ['contacto']
         }),
         new MiniCssExtract({
             filename: '[name].[fullhash].css',
+            
             // ignoreOrder: false
         }),
         new CopyPlugin({
             patterns: [
                 { from: "src/assets", to: "assets/" },
-                {from:'/*.html',to:'./'},
+                // {from:'src/pages',to:'pages/'},
             ],
         }),
         new ProvidePlugin({

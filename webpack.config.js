@@ -16,8 +16,8 @@ module.exports = {
                 options: {
                     sources: false,
                     minimize: true,
-                    removeComments: true,
-                    collapseWhitespace: true,
+                    // removeComments: true,
+                    // collapseWhitespace: true,
                 }
             },
             {
@@ -50,9 +50,17 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpack({
-            // filename: 'index.html',
+            filename: 'index.html',
             template: './src/index.html',
+            chunks: ['main']
         }),
+        new HtmlWebpack({
+            // filename: 'index.html',
+            filename: 'contacto.html',
+            template: './src/contacto.html',
+            chunks: ['contacto']
+        }),
+        
         new MiniCssExtract({
             filename: '[name].css',
             // ignoreOrder: false
